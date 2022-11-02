@@ -1,2 +1,4 @@
 # Könyvtár
-Ez egy könyvtár adminisztrációs munkáit reprezentáló program
+
+> Ez egy könyvtár adminisztrációs munkáit szimuláló program.
+### Készítették: 
