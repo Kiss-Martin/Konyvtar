@@ -1,3 +1,2 @@
 # Könyvtár
-Teszt
-Teszt
+Ez egy könyvtár adminisztrációs munkáit reprezentáló program
