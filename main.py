@@ -1,7 +1,6 @@
 from menu import *
 from functions import *
 from classes import *
-from kereses import *
 
 ReadFileKolcsonzok()
 ReadFileKonyvek()
