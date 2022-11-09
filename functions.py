@@ -72,3 +72,6 @@ def IroAlapjan():
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
     input('\n')
+
+def kolcsonzes():
+    nev = input('Irja be a kölcsönző nevét') 
