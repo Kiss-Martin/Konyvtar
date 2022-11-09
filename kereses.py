@@ -12,17 +12,18 @@ def KeresesMenu():
 
 def CimAlapjan():
     cim = input('Írja be a könyv címét: ')
+    i = 0
     for r in konyvek:
         if cim.lower() in r.nev.lower():
+            i += 1
             if r.kolcsonozve == 'igen':
                 print('A könyv nem kölcsönezhető jelenleg')
                 input('\n')
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
                 input('\n')
-        else:
-            print('Nem található a könyv a listában!')
-    
+    if i == 0:
+        print('Nem található ilyen könyv a listában.')
 
 
 ReadFileKonyvek()
