@@ -10,9 +10,9 @@ def menu():
     print('6. Adott könyvre keresés\n')
     print('0. Kilépés a programból')
 
-    choice = input('\nVálasztás (0-5): ')
+    choice = input('\nVálasztás (0-6): ')
     while len(choice) != 1 or '0' > choice or '6' < choice:
-        choice = input('\nVálasztás (0..5): ')
+        choice = input('\nVálasztás (0..6): ')
     
     os.system('cls')
     return int(choice)
