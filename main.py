@@ -1,13 +1,17 @@
 from menu import *
-from kereses import*
+from functions import *
+from classes import *
+from kereses import *
 
+ReadFileKolcsonzok()
+ReadFileKonyvek()
 choice = menu()
 while choice != 0:
     if choice == 1:
-        Kolcsonzes()
+        ()
     elif choice == 2:
-        konyvKereses()
+        KeresesMenu()
     elif choice == 3:
-        kolcsonzoKereses()
+        ()
     choice = menu()
 
