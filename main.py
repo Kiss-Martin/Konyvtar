@@ -3,16 +3,16 @@ from menu import *
 choice = menu()
 while choice != 0:
     if choice == 1:
-        konyvekKolcsonzese()
+        KonyvekKolcsonzese()
     elif choice == 2:
-        mindenKonyv()
+        MindenKonyv()
     elif choice == 3:
-        ujKonyv()
+        UjKonyv()
     elif choice == 4:
-        modositasKonyv()
+        ModositasKonyv()
     elif choice == 5:
-        kolcsonzottKonyvek()
+        KolcsonzottKonyvek()
     elif choice == 6:
-        keresesKonyv()
+        KeresesMenu()
     choice = menu()
 
