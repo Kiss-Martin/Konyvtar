@@ -56,7 +56,7 @@ def CimAlapjan():
         if cim.lower() in r.nev.lower():
             print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
-                print('A könyv nem kölcsönezhető jelenleg')
+                print('A könyv jelenleg nem kölcsönezhető')
                 input('\n')
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
@@ -68,7 +68,7 @@ def IroAlapjan():
         if szerzo.lower() in r.szerzo.lower():
             print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
-                print('A könyv nem kölcsönezhető jelenleg')
+                print('A könyv jelenleg nem kölcsönezhető')
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
     input('\n')
@@ -79,7 +79,7 @@ def EvAlapjan():
         if ev.lower() in r.kiadasEve.lower():
             print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
-                print('A könyv nem kölcsönezhető jelenleg')
+                print('A könyv jelenleg nem kölcsönezhető')
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
     input('\n')
@@ -90,7 +90,7 @@ def AzonositoAlapjan():
         if id.lower() in r.azonosito.lower():
             print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
-                print('A könyv nem kölcsönezhető jelenleg')
+                print('A könyv jelenleg nem kölcsönezhető')
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
     input('\n')
