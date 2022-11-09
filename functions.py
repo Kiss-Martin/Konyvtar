@@ -21,3 +21,10 @@ def ReadFileKonyvek():
         r = konyv(row.strip())
         konyvek.append(r)
     f.close()
+
+def writeFileKolcsonzok():
+    f = open('kolcsonzok.csv', 'w', encoding='UTF-8')
+    for r in kolcsonzok:
+        row = f'{r.nev};{r.module};{r.time};{r.percent}'
+        f.write(row)
+    f.close()

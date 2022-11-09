@@ -1,18 +1,13 @@
 from menu import *
+from kereses import*
 
 choice = menu()
 while choice != 0:
     if choice == 1:
-        konyvekKolcsonzese()
+        Kolcsonzes()
     elif choice == 2:
-        mindenKonyv()
+        konyvKereses()
     elif choice == 3:
-        ujKonyv()
-    elif choice == 4:
-        modositasKonyv()
-    elif choice == 5:
-        kolcsonzottKonyvek()
-    elif choice == 6:
-        keresesKonyv()
+        kolcsonzoKereses()
     choice = menu()
 
