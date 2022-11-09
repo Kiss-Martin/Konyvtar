@@ -45,18 +45,18 @@ def KeresesMenu():
         elif choice == '2':
             IroAlapjan()
         elif choice == '3':
-            pass
+            EvAlapjan()
         elif choice == '4':
-            pass
+            AzonositoAlapjan()
 
 
 def CimAlapjan():
     cim = input('Írja be a könyv címét: ')
     for r in konyvek:
         if cim.lower() in r.nev.lower():
-            print(f'{r.szerzo}: {r.nev}')
+            print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
-                print('A könyv nem kölcsönezhető jelenleg')
+                print('A könyv jelenleg nem kölcsönezhető')
                 input('\n')
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
@@ -66,9 +66,34 @@ def IroAlapjan():
     szerzo = input('Írja be a könyv íróját: ')
     for r in konyvek:
         if szerzo.lower() in r.szerzo.lower():
-            print(f'{r.szerzo}: {r.nev}')
+            print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
-                print('A könyv nem kölcsönezhető jelenleg')
+                print('A könyv jelenleg nem kölcsönezhető')
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
     input('\n')
+
+def EvAlapjan():
+    ev = input('Írja be a könyv kiadásának évét: ')
+    for r in konyvek:
+        if ev.lower() in r.kiadasEve.lower():
+            print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
+            if r.kolcsonozve == 'igen':
+                print('A könyv jelenleg nem kölcsönezhető')
+            else:
+                print('A könyv jelenleg kölcsönözhető\n')
+    input('\n')
+
+def AzonositoAlapjan():
+    id = input('Írja be a könyv azonosítóját: ')
+    for r in konyvek:
+        if id.lower() in r.azonosito.lower():
+            print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
+            if r.kolcsonozve == 'igen':
+                print('A könyv jelenleg nem kölcsönezhető')
+            else:
+                print('A könyv jelenleg kölcsönözhető\n')
+    input('\n')
+
+def kolcsonzes():
+    nev = input('Irja be a kölcsönző nevét') 

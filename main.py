@@ -7,7 +7,7 @@ ReadFileKonyvek()
 choice = menu()
 while choice != 0:
     if choice == 1:
-        ()
+        kolcsonzes()
     elif choice == 2:
         KeresesMenu()
     elif choice == 3:
