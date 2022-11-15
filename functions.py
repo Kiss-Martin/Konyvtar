@@ -111,7 +111,7 @@ def KolcsonzoKereses():
 
 def NevAlapjan():
     nev = input('Írja be a kölcsönző nevét: ')
-    for s in konyvek:
+    for s in kolcsonzok:
         if nev.lower() in s.nev.lower():
             print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
             if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
@@ -123,7 +123,7 @@ def NevAlapjan():
 
 def BeiratkozasAlapjan():
     signin = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
-    for s in konyvek:
+    for s in kolcsonzok:
         if signin.lower() in s.beiratkozas.lower():
             print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
             if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
