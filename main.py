@@ -11,6 +11,6 @@ while choice != 0:
     elif choice == 2:
         KeresesMenu()
     elif choice == 3:
-        ()
+        KolcsonzoKereses()
     choice = menu()
 

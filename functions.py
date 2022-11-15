@@ -95,5 +95,43 @@ def AzonositoAlapjan():
                 print('A könyv jelenleg kölcsönözhető\n')
     input('\n')
 
+def KolcsonzoKereses():
+    choice = ''
+    while choice != '0':
+        print('1. Keresés név alapján')
+        print('2. Keresés beiratkozás ideje alapján')
+        print('0. Kilépés a keresésből')
+
+        choice = input('\nVálasztás (1-2): ')
+
+        if choice == '1':
+            NevAlapjan()
+        elif choice == '2':
+            BeiratkozasAlapjan()
+
+def NevAlapjan():
+    nev = input('Írja be a kölcsönző nevét: ')
+    for s in konyvek:
+        if nev.lower() in s.nev.lower():
+            print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
+            if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
+                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv\n')
+                input('\n')
+            else:
+                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
+                input('\n')
+
+def BeiratkozasAlapjan():
+    signin = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
+    for s in konyvek:
+        if signin.lower() in s.beiratkozas.lower():
+            print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
+            if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
+                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv\n')
+                input('\n')
+            else:
+                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
+                input('\n')
+
 def kolcsonzes():
-    nev = input('Irja be a kölcsönző nevét') 
+    nev = input('Irja be a kölcsönző nevét: ') 
