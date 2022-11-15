@@ -133,5 +133,7 @@ def BeiratkozasAlapjan():
                 print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
                 input('\n')
 
+
 def kolcsonzes():
     nev = input('Irja be a kölcsönző nevét: ') 
+    pass
