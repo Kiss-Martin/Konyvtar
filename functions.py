@@ -9,7 +9,7 @@ def ReadFileKolcsonzok():
     f.readline()
     for row in f:
         print(row)
-        r = kolcsono(row.strip())
+        r = kolcsonzo(row.strip())
         kolcsonzok.append(r)
     f.close()
 
