@@ -175,7 +175,20 @@ def Ki():
         if r.nev.lower() == name.lower():
             kolcsonzok.remove(r)
             writeFileKolcsonzok()
-            print(f'{name} sikeresen törölve lett a listából')
+            print(f'{name} sikeresen törölve lett a listából\n')
 
 def Be():
-    pass
+    nev = input('Új tag neve: ')
+    datum = input('Beiratkozás dátuma (éééé.hh.nn): ')
+    azonosito = "nincs"
+    visszahozas = "nincs"
+
+    row = f'{nev};{datum};{azonosito};{visszahozas}\n'
+    f = open('Kolcsonzok.csv', 'a', encoding="UTF-8")    
+    f.write(row)
+    f.close()
+
+    r = kolcsonzo(row)
+    kolcsonzok.append(r)
+    
+    
