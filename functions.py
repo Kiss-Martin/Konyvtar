@@ -163,6 +163,18 @@ def KiBe():
         choice = input('\nVálasztás (1-2): ')
 
         if choice == '1':
-            pass
+            Ki()
         elif choice == '2':
-            pass
+            Be()
+
+def Ki():
+    name = input('Kiiratkoztani kívánt személy neve: ')
+    r = None
+    for r in kolcsonzok:
+        if r.nev.lower() == name.lower():
+            kolcsonzok.remove(r)
+            writeFileKolcsonzok()
+            print(f'{name} sikeresen törölve lett a listából')
+
+def Be():
+    pass
