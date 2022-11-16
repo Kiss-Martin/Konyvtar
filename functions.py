@@ -115,10 +115,10 @@ def NevAlapjan():
         if nev.lower() in s.nev.lower():
             print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
             if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
-                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv\n')
+                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
                 input('\n')
             else:
-                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
+                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
                 input('\n')
 
 def BeiratkozasAlapjan():
@@ -127,10 +127,10 @@ def BeiratkozasAlapjan():
         if signin.lower() in s.beiratkozas.lower():
             print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
             if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
-                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv\n')
+                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
                 input('\n')
             else:
-                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
+                print(f'kölcsönzött könyve: {s.cim}: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
                 input('\n')
 
 
