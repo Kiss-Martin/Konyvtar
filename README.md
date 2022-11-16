@@ -3,12 +3,10 @@
 ## Funkciói:
 ### Menü:
 A menü 3 felé ágazik:
-- Kölcsönzőmenü:
-  - Keresés:
-    - Név alapján
-    - Beiratkozás dátuma alapján
-  - Kölcsönzők hozzáadása / eltávolítása
-    
+
+- Könyvek kölcsönzése:
+  - Név bekérés -> Ha kölcsönözhet könyvnév bekérése -> Könyv kölcsönzött státuszba tétele 
+
 - Könyvmenü:
   - Könyvek keresése:
     - Név alapján
@@ -17,9 +15,12 @@ A menü 3 felé ágazik:
     - Azonosító alapján
   - Könyv hozzáadása / eltávolítása
 
-- Könyvek kölcsönzése:
-  - Név bekérés -> Ha kölcsönözhet könyvnév bekérése -> Könyv kölcsönzött státuszba tétele 
-
+- Kölcsönzőmenü:
+  - Keresés:
+    - Név alapján
+    - Beiratkozás dátuma alapján
+  - Kölcsönzők hozzáadása / eltávolítása
+    
 ---
 ### Készítették: 
 - Kiss Martin 

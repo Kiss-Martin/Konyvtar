@@ -1,5 +1,5 @@
 # Név;Beiratkozás időpontja;Könyv azonosító;Visszahozás időpontja
-class kolcsono:
+class kolcsonzo:
     def __init__(self, row: str) -> None:
         data = row.split(';')
         self.nev = data[0]
@@ -17,3 +17,4 @@ class konyv:
         self.kategoria = data[3]
         self.kolcsonozve = data[4]
         self.azonosito = data[5]
+

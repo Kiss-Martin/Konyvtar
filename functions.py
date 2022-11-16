@@ -9,7 +9,7 @@ def ReadFileKolcsonzok():
     f.readline()
     for row in f:
         print(row)
-        r = kolcsono(row.strip())
+        r = kolcsonzo(row.strip())
         kolcsonzok.append(r)
     f.close()
 
@@ -108,6 +108,7 @@ def KolcsonzoKereses():
     while choice != '0':
         print('1. Keresés név alapján')
         print('2. Keresés beiratkozás ideje alapján')
+        print('3. Beiratkoztatás/Kiiratkoztatás')
         print('0. Kilépés a keresésből')
 
         choice = input('\nVálasztás (1-2): ')
@@ -116,6 +117,8 @@ def KolcsonzoKereses():
             NevAlapjan()
         elif choice == '2':
             BeiratkozasAlapjan()
+        elif choice == '3':
+            KiBe()
 
 def NevAlapjan():
     nev = input('Írja be a kölcsönző nevét: ')
@@ -123,11 +126,11 @@ def NevAlapjan():
         if nev.lower() in s.nev.lower():
             print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
             if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
-                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv\n')
+                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
                 input('\n')
                 return s
             else:
-                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
+                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
                 input('\n')
 
 def BeiratkozasAlapjan():
@@ -136,10 +139,10 @@ def BeiratkozasAlapjan():
         if signin.lower() in s.beiratkozas.lower():
             print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
             if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
-                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv\n')
+                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
                 input('\n')
             else:
-                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
+                print(f'kölcsönzött könyve: {s.cim}: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
                 input('\n')
 
 def kolcsonzes():
@@ -148,3 +151,18 @@ def kolcsonzes():
     kolcsonzo.visszahozas = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
     kolcsonzo.azonosito = konyv.azonosito
     konyv.kolcsonozve = "igen"
+
+
+def KiBe():
+    choice = ''
+    while choice != '0':
+        print('1. Kiiratkoztatás')
+        print('2. Beiratkoztatás')
+        print('0. Kilépés')
+
+        choice = input('\nVálasztás (1-2): ')
+
+        if choice == '1':
+            pass
+        elif choice == '2':
+            pass
