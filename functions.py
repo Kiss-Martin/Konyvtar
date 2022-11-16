@@ -25,7 +25,14 @@ def ReadFileKonyvek():
 def writeFileKolcsonzok():
     f = open('kolcsonzok.csv', 'w', encoding='UTF-8')
     for r in kolcsonzok:
-        row = f'{r.nev};{r.module};{r.time};{r.percent}'
+        row = f'{r.nev};{r.beiratkozas};{r.azonosito};{r.visszahozas}'
+        f.write(row)
+    f.close()
+
+def writeFileKonyv():
+    f = open('konyvek.csv', 'w', encoding='UTF-8')
+    for r in kolcsonzok:
+        row = f'{r.nev};{r.szerzo};{r.kiadasEve};{r.kategoria};{r.kolcsonozve};{r.azonosito}'
         f.write(row)
     f.close()
 
@@ -61,6 +68,7 @@ def CimAlapjan():
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
                 input('\n')
+                return r
 
 def IroAlapjan():
     szerzo = input('Írja be a könyv íróját: ')
@@ -117,6 +125,7 @@ def NevAlapjan():
             if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
                 print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv\n')
                 input('\n')
+                return s
             else:
                 print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
                 input('\n')
@@ -133,7 +142,9 @@ def BeiratkozasAlapjan():
                 print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}\n')
                 input('\n')
 
-
 def kolcsonzes():
-    nev = input('Irja be a kölcsönző nevét: ') 
-    pass
+    kolcsonzo = NevAlapjan()
+    konyv =  CimAlapjan()
+    kolcsonzo.visszahozas = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
+    kolcsonzo.azonosito = konyv.azonosito
+    konyv.kolcsonozve = "igen"
