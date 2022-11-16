@@ -100,6 +100,7 @@ def KolcsonzoKereses():
     while choice != '0':
         print('1. Keresés név alapján')
         print('2. Keresés beiratkozás ideje alapján')
+        print('3. Beiratkoztatás/Kiiratkoztatás')
         print('0. Kilépés a keresésből')
 
         choice = input('\nVálasztás (1-2): ')
@@ -108,6 +109,8 @@ def KolcsonzoKereses():
             NevAlapjan()
         elif choice == '2':
             BeiratkozasAlapjan()
+        elif choice == '3':
+            KiBe()
 
 def NevAlapjan():
     nev = input('Írja be a kölcsönző nevét: ')
@@ -137,3 +140,17 @@ def BeiratkozasAlapjan():
 def kolcsonzes():
     nev = input('Irja be a kölcsönző nevét: ') 
     pass
+
+def KiBe():
+    choice = ''
+    while choice != '0':
+        print('1. Kiiratkoztatás')
+        print('2. Beiratkoztatás')
+        print('0. Kilépés')
+
+        choice = input('\nVálasztás (1-2): ')
+
+        if choice == '1':
+            pass
+        elif choice == '2':
+            pass
