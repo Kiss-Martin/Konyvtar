@@ -6,7 +6,6 @@ konyvek = []
 def ReadFileKolcsonzok():
     kolcsonzok.clear()
     f = open('kolcsonzok.csv', 'r', encoding="UTF-8")
-    f.readline()
     for row in f:
         print(row)
         r = kolcsonzo(row.strip())
@@ -16,7 +15,6 @@ def ReadFileKolcsonzok():
 def ReadFileKonyvek():
     konyvek.clear()
     f = open('konyvek.csv', 'r', encoding="UTF-8")
-    f.readline()
     for row in f:
         r = konyv(row.strip())
         konyvek.append(r)
@@ -25,14 +23,14 @@ def ReadFileKonyvek():
 def writeFileKolcsonzok():
     f = open('kolcsonzok.csv', 'w', encoding='UTF-8')
     for r in kolcsonzok:
-        row = f'{r.nev};{r.beiratkozas};{r.azonosito};{r.visszahozas}'
+        row = f'{r.nev};{r.beiratkozas};{r.azonosito};{r.visszahozas}\n'
         f.write(row)
     f.close()
 
 def writeFileKonyv():
     f = open('konyvek.csv', 'w', encoding='UTF-8')
-    for r in kolcsonzok:
-        row = f'{r.nev};{r.szerzo};{r.kiadasEve};{r.kategoria};{r.kolcsonozve};{r.azonosito}'
+    for r in konyvek:
+        row = f'{r.nev};{r.szerzo};{r.kiadasEve};{r.kategoria};{r.kolcsonozve};{r.azonosito}\n'
         f.write(row)
     f.close()
 
@@ -121,7 +119,7 @@ def KolcsonzoKereses():
             KiBe()
 
 def NevAlapjan():
-    nev = input('Írja be a kölcsönző nevét: ')
+    nev = input('Írja be a kölcsönző nevét(teljes név): ')
     for s in kolcsonzok:
         if nev.lower() in s.nev.lower():
             print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
@@ -148,9 +146,12 @@ def BeiratkozasAlapjan():
 def kolcsonzes():
     kolcsonzo = NevAlapjan()
     konyv =  CimAlapjan()
-    kolcsonzo.visszahozas = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
+    kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
     kolcsonzo.azonosito = konyv.azonosito
     konyv.kolcsonozve = "igen"
+    writeFileKolcsonzok()
+    writeFileKonyv()
+
 
 
 def KiBe():
