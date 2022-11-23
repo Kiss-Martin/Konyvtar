@@ -128,17 +128,33 @@ def KolcsonzoKereses():
 
 def NevAlapjan():
     nev = input('Írja be a kölcsönző nevét(teljes név): ')
-    for s in kolcsonzok:
-        if nev.lower() in s.nev.lower():
-            print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
-            if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
-                print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
-                input('\n')
-                return s
-            else:
-                print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
-                input('\n')
-                return s
+    i = 0
+    while i < len(kolcsonzok) and kolcsonzok[i].nev.lower() != nev.lower():
+        i += 1 
+    if i < len(kolcsonzok):
+        print(f'{kolcsonzok[i].nev}, beiratkozva: {kolcsonzok[i].beiratkozas}')
+        if kolcsonzok[i].azonosito == 'nincs' and kolcsonzok[i].visszahozas == 'nincs':
+            print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
+            input('\n')
+            return kolcsonzok[i]
+        else:
+            print(f'kölcsönzött könyve: {kolcsonzok[i].azonosito}, visszahozási határidő: {kolcsonzok[i].visszahozas}')
+            input('\n')
+            return kolcsonzok[i]
+    else:
+        print('Nincs ilyen nevű személy!\n')
+
+    # for s in kolcsonzok:
+    #     if nev.lower() in s.nev.lower():
+    #         print(f'{s.nev}, beiratkozva: {s.beiratkozas}')
+    #         if s.azonosito == 'nincs' and s.visszahozas == 'nincs':
+    #             print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
+    #             input('\n')
+    #             return s
+    #         else:
+    #             print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
+    #             input('\n')
+    #             return s
 
 def BeiratkozasAlapjan():
     signin = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
