@@ -58,13 +58,14 @@ def KeresesMenu():
 
 
 def CimAlapjan():
-    cim = input('Írja be a könyv címét: ')
+    cim = input('Írja be a könyv pontos címét: ')
     for r in konyvek:
         if cim.lower() in r.nev.lower():
             print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
                 print('A könyv jelenleg nem kölcsönezhető')
                 input('\n')
+                return 'nem'
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
                 input('\n')
@@ -134,6 +135,7 @@ def NevAlapjan():
             else:
                 print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
                 input('\n')
+                return 'nem'
 
 def BeiratkozasAlapjan():
     signin = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
@@ -149,12 +151,20 @@ def BeiratkozasAlapjan():
 
 def kolcsonzes():
     kolcsonzo = NevAlapjan()
-    konyv =  CimAlapjan()
-    kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
-    kolcsonzo.azonosito = konyv.azonosito
-    konyv.kolcsonozve = "igen"
-    writeFileKolcsonzok()
-    writeFileKonyv()
+    if kolcsonzo != "nem":
+        konyv =  CimAlapjan()
+        if konyv != "nem":
+            kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
+            kolcsonzo.azonosito = konyv.azonosito
+            konyv.kolcsonozve = "igen"
+            writeFileKolcsonzok()
+            writeFileKonyv()
+        else:
+            print('Kölcsönzés sikertelen!')
+            input('')
+    else:
+        print('Kölcsönzés sikertelen!')
+        input('')
 
 
 
