@@ -59,9 +59,11 @@ def KeresesMenu():
 
 def CimAlapjan():
     cim = input('Írja be a könyv pontos címét: ')
-    i = 1
+    i = 0
+    print
     while i < len(konyvek) and konyvek[i].nev.lower() != cim:
         i += 1 
+        print('Teszt')
     if i < len(konyvek):
         print(f'{konyvek[i].szerzo}: {konyvek[i].nev}, {konyvek[i].kiadasEve} Azonosító: {konyvek[i].azonosito}')
         if konyvek[i].kolcsonozve == 'igen':
@@ -72,7 +74,7 @@ def CimAlapjan():
             return konyvek[i]
     else:
         print('\033[1;31;40mNincs ilyen ilyen című könyv!\n\033[0m')
-        return konyvek[0]
+        return "nem"
     
 def IroAlapjan():
     szerzo = input('Írja be a könyv íróját: ')
@@ -84,8 +86,9 @@ def IroAlapjan():
             else:
                 print('\033[1;32;40mA könyv jelenleg kölcsönözhető\n\033[0m')
 
-def AzonositoAlapjan():
-    id = input('Írja be a könyv azonosítóját: ')
+def AzonositoAlapjan(id:int=0):
+    if id == 0:
+        id = input('Írja be a könyv azonosítóját: ')
     i = 0
     while i < len(konyvek) and konyvek[i].azonosito != id:
         i += 1 
@@ -93,8 +96,10 @@ def AzonositoAlapjan():
         print(f'{konyvek[i].szerzo}: {konyvek[i].nev}, {konyvek[i].kiadasEve} Azonosító: {konyvek[i].azonosito}')
         if konyvek[i].kolcsonozve == 'igen':
             print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\n\033[0m')
+            return konyvek[i]
         else:
             print('\033[1;32;40mA könyv jelenleg kölcsönözhető\n\033[0m')
+            return konyvek[i]
     else:
         print('\033[1;31;40mNincs ilyen azonosítóval rendelkező könyv!\n\033[0m')
     
@@ -116,7 +121,7 @@ def KolcsonzoKereses():
 
 def NevAlapjan():
     nev = input('Írja be a kölcsönző nevét(teljes név): ')
-    i = 1
+    i = 0
     while i < len(kolcsonzok) and kolcsonzok[i].nev.lower() != nev.lower():
         i += 1 
     if i < len(kolcsonzok):
@@ -129,34 +134,46 @@ def NevAlapjan():
             return kolcsonzok[i]
     else:
         print('\033[1;31;40mNincs ilyen nevű személy!\n\033[0m') 
-        return kolcsonzok[0]
+        return "nem"
 
 def kolcsonzes():
     kolcsonzo = NevAlapjan()
-    if kolcsonzo.azonosito == "nincs":
-        konyv =  CimAlapjan()
-        if konyv.kolcsonozve == "nem":
-            kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
-            kolcsonzo.azonosito = konyv.azonosito
-            konyv.kolcsonozve = "igen"
-            writeFileKolcsonzok()
-            writeFileKonyv()
+    if kolcsonzo != "nem":
+        if kolcsonzo.azonosito == "nincs":
+            konyv =  CimAlapjan()
+            if konyv != "nem":
+                print('Átjutottam')
+                if konyv.kolcsonozve == "nem":
+                    kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
+                    kolcsonzo.azonosito = konyv.azonosito
+                    konyv.kolcsonozve = "igen"
+                    writeFileKolcsonzok()
+                    writeFileKonyv()
+                    print('Sikeres kölcsönzés')
+                else:
+                    print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
+            else:
+                print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
         else:
             print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
     else:
         print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
+    input('')
 
 def Visszahozas():
     kolcsonzo = NevAlapjan()
-    if kolcsonzo.azonosito != "nincs":
-        konyv =  CimAlapjan()
-        if konyv.kolcsonozve == "igen" and konyv.azonosito == kolcsonzo.azonosito:
-            input('Folyamat megkezdése')
-            kolcsonzo.visszahozas = "nincs"
-            kolcsonzo.azonosito = "nincs"
-            konyv.kolcsonozve = "Nem"
-            writeFileKolcsonzok()
-            writeFileKonyv()
+    if kolcsonzo != "nem":
+        if kolcsonzo.azonosito != "nincs":
+            konyv =  AzonositoAlapjan(kolcsonzo.azonosito)
+            if konyv.kolcsonozve == "igen" and konyv.azonosito == kolcsonzo.azonosito:
+                kolcsonzo.visszahozas = "nincs"
+                kolcsonzo.azonosito = "nincs"
+                konyv.kolcsonozve = "Nem"
+                writeFileKolcsonzok()
+                writeFileKonyv()
+                print('Könyv sikeresen visszahozva')
+            else:
+                print('\033[1;31;40mVisszahozás sikertelen!\n\033[0m')
         else:
             print('\033[1;31;40mVisszahozás sikertelen!\n\033[0m')
     else:
