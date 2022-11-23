@@ -65,15 +65,15 @@ def CimAlapjan():
     if i < len(konyvek):
         print(f'{konyvek[i].szerzo}: {konyvek[i].nev}, {konyvek[i].kiadasEve} Azonosító: {konyvek[i].azonosito}')
         if konyvek[i].kolcsonozve == 'igen':
-            print('A könyv jelenleg nem kölcsönezhető')
+            print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\033[0m')
             input('')
             return konyvek[i]
         else:
-            print('A könyv jelenleg kölcsönözhető\n')
+            print('\033[1;32;40mA könyv jelenleg kölcsönözhető\n\033[0m')
             input('')
             return konyvek[i]
     else:
-        print('Nincs ilyen ilyen című könyv!\n')
+        print('\033[1;31;40mNincs ilyen ilyen című könyv!\n\033[0m')
         input('')
         return konyvek[0]
     
@@ -96,13 +96,13 @@ def AzonositoAlapjan():
     if i < len(konyvek):
         print(f'{konyvek[i].szerzo}: {konyvek[i].nev}, {konyvek[i].kiadasEve} Azonosító: {konyvek[i].azonosito}')
         if konyvek[i].kolcsonozve == 'igen':
-            print('A könyv jelenleg nem kölcsönezhető')
+            print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\033[0m')
             input('')
         else:
-            print('A könyv jelenleg kölcsönözhető\n')
+            print('\033[1;32;40mA könyv jelenleg kölcsönözhető\n\033[0m')
             input('')
     else:
-        print('Nincs ilyen azonosítóval rendelkező könyv!\n')
+        print('\033[1;31;40mNincs ilyen azonosítóval rendelkező könyv!\n\033[0m')
         input('')  
     
 def KolcsonzoKereses():
@@ -129,7 +129,7 @@ def NevAlapjan():
     if i < len(kolcsonzok):
         print(f'{kolcsonzok[i].nev}, beiratkozva: {kolcsonzok[i].beiratkozas}')
         if kolcsonzok[i].azonosito == 'nincs' and kolcsonzok[i].visszahozas == 'nincs':
-            print('A kölcsönzőnél jelenleg nincs kölcsönzött könyv')
+            print('\033[1;33;40mA kölcsönzőnél jelenleg nincs kölcsönzött könyv\033[0m')
             input('\n')
             return kolcsonzok[i]
         else:
@@ -137,7 +137,7 @@ def NevAlapjan():
             input('\n')
             return kolcsonzok[i]
     else:
-        print('Nincs ilyen nevű személy!\n') 
+        print('\033[1;31;40mNincs ilyen nevű személy!\n\033[0m') 
         input('')  
         return kolcsonzok[0]
 
