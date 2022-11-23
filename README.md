@@ -12,7 +12,6 @@ A menü 4 felé ágazik:
 
 - Könyvmenü:
   - Könyvek keresése:
-    - Név alapján
     - Cím alapján
     - Szerző alapján
     - Azonosító alapján
