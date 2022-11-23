@@ -164,7 +164,7 @@ def KiBe():
         print('1. Kiiratkoztatás')
         print('2. Beiratkoztatás')
         print('0. Kilépés')
-
+        
         choice = input('\nVálasztás (1-2): ')
 
         if choice == '1':
