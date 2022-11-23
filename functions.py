@@ -37,11 +37,14 @@ def writeFileKonyv():
 def KeresesMenu():
     choice = ''
     while choice != '0':
-        print('1. Keresés cím alapján')
-        print('2. Keresés író alapján')
-        print('3. Keresés kiadás éve alapján')
-        print('4. Keresés azonosító alapján')
-        print('0. Kilépés a keresésből')
+        print('  ===========[Könyvek keresése]=============')
+        print('----------------------------------------------')
+        print('\t1. Keresés cím alapján')
+        print('\t2. Keresés író alapján')
+        print('\t3. Keresés kiadás éve alapján')
+        print('\t4. Keresés azonosító alapján')
+        print('\t5. Könyv hozzáadása')
+        print('\t0. Kilépés a keresésből')
 
         choice = input('\nVálasztás (1-4): ')
 
@@ -53,16 +56,19 @@ def KeresesMenu():
             EvAlapjan()
         elif choice == '4':
             AzonositoAlapjan()
+        elif choice == '5':
+            BeKonyv()
 
 
 def CimAlapjan():
-    cim = input('Írja be a könyv címét: ')
+    cim = input('Írja be a könyv pontos címét: ')
     for r in konyvek:
         if cim.lower() in r.nev.lower():
             print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
                 print('A könyv jelenleg nem kölcsönezhető')
                 input('\n')
+                return r
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
                 input('\n')
@@ -104,12 +110,14 @@ def AzonositoAlapjan():
 def KolcsonzoKereses():
     choice = ''
     while choice != '0':
-        print('1. Keresés név alapján')
-        print('2. Keresés beiratkozás ideje alapján')
-        print('3. Beiratkoztatás/Kiiratkoztatás')
-        print('0. Kilépés a keresésből')
+        print('  ===========[Kölcsönzők keresése]=============')
+        print('-------------------------------------------------')
+        print('\t1. Keresés név alapján')
+        print('\t2. Keresés beiratkozás ideje alapján')
+        print('\t3. Beiratkoztatás/Kiiratkoztatás')
+        print('\t0. Kilépés a keresésből')
 
-        choice = input('\nVálasztás (1-2): ')
+        choice = input('\nVálasztás (1-3): ')
 
         if choice == '1':
             NevAlapjan()
@@ -130,6 +138,7 @@ def NevAlapjan():
             else:
                 print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
                 input('\n')
+                return s
 
 def BeiratkozasAlapjan():
     signin = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
@@ -145,14 +154,38 @@ def BeiratkozasAlapjan():
 
 def kolcsonzes():
     kolcsonzo = NevAlapjan()
-    konyv =  CimAlapjan()
-    kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
-    kolcsonzo.azonosito = konyv.azonosito
-    konyv.kolcsonozve = "igen"
-    writeFileKolcsonzok()
-    writeFileKonyv()
+    if kolcsonzo.azonosito == "nincs":
+        konyv =  CimAlapjan()
+        if konyv.kolcsonozve == "nem":
+            kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
+            kolcsonzo.azonosito = konyv.azonosito
+            konyv.kolcsonozve = "igen"
+            writeFileKolcsonzok()
+            writeFileKonyv()
+        else:
+            print('Kölcsönzés sikertelen!')
+            input('')
+    else:
+        print('Kölcsönzés sikertelen!')
+        input('')
 
-
+def Visszahozas():
+    kolcsonzo = NevAlapjan()
+    if kolcsonzo.azonosito != "nincs":
+        konyv =  CimAlapjan()
+        if konyv.kolcsonozve == "igen" and konyv.azonosito == kolcsonzo.azonosito:
+            input('Folyamat megkezdése')
+            kolcsonzo.visszahozas = "nincs"
+            kolcsonzo.azonosito = "nincs"
+            konyv.kolcsonozve = "Nem"
+            writeFileKolcsonzok()
+            writeFileKonyv()
+        else:
+            print('Visszahozás sikertelen!')
+            input('')
+    else:
+        print('Visszahozás sikertelen!')
+        input('')
 
 def KiBe():
     choice = ''
@@ -160,7 +193,7 @@ def KiBe():
         print('1. Kiiratkoztatás')
         print('2. Beiratkoztatás')
         print('0. Kilépés')
-
+        
         choice = input('\nVálasztás (1-2): ')
 
         if choice == '1':
@@ -220,7 +253,7 @@ def BeKonyv():
     kiadasEve  = input('Kiadás éve: ')
     kategoria = input('Új könyv kategóriája: ')
     kolcsonozve = "nincs"
-    azonosito = ''
+    azonosito = len(konyvek) + 101
 
     row = f'{nev};{szerzo};{kiadasEve};{kategoria};{kolcsonozve};{azonosito}\n'
     f = open('konyvek.csv', 'a', encoding="UTF-8")    
@@ -228,5 +261,6 @@ def BeKonyv():
     f.close()
 
     r = konyv(row)
-    konyv.append(r)
+    konyvek.append(r)
+    print('Hozzáadás sikeres!\n')
     
