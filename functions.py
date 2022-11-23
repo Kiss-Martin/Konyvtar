@@ -43,6 +43,7 @@ def KeresesMenu():
         print('\t2. Keresés író alapján')
         print('\t3. Keresés kiadás éve alapján')
         print('\t4. Keresés azonosító alapján')
+        print('\t5. Könyv hozzáadása')
         print('\t0. Kilépés a keresésből')
 
         choice = input('\nVálasztás (1-4): ')
@@ -55,6 +56,8 @@ def KeresesMenu():
             EvAlapjan()
         elif choice == '4':
             AzonositoAlapjan()
+        elif choice == '5':
+            BeKonyv()
 
 
 def CimAlapjan():
@@ -190,7 +193,7 @@ def KiBe():
         print('1. Kiiratkoztatás')
         print('2. Beiratkoztatás')
         print('0. Kilépés')
-
+        
         choice = input('\nVálasztás (1-2): ')
 
         if choice == '1':
@@ -250,7 +253,7 @@ def BeKonyv():
     kiadasEve  = input('Kiadás éve: ')
     kategoria = input('Új könyv kategóriája: ')
     kolcsonozve = "nincs"
-    azonosito = ''
+    azonosito = len(konyvek) + 101
 
     row = f'{nev};{szerzo};{kiadasEve};{kategoria};{kolcsonozve};{azonosito}\n'
     f = open('konyvek.csv', 'a', encoding="UTF-8")    
@@ -258,5 +261,6 @@ def BeKonyv():
     f.close()
 
     r = konyv(row)
-    konyv.append(r)
+    konyvek.append(r)
+    print('Hozzáadás sikeres!\n')
     
