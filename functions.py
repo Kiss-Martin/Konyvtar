@@ -191,4 +191,42 @@ def Be():
     r = kolcsonzo(row)
     kolcsonzok.append(r)
     
+def KiBeKonyv():
+    choice = ''
+    while choice != '0':
+        print('1. Könyv törlése')
+        print('2. Könyv hozzáadása')
+        print('0. Kilépés')
+
+        choice = input('\nVálasztás (1-2): ')
+
+        if choice == '1':
+            KiKonyv()
+        elif choice == '2':
+            BeKonyv()
+
+def KiKonyv():
+    name = input('Kitörölni kívánt könyv neve: ')
+    r = None
+    for r in konyvek:
+        if r.nev.lower() == name.lower():
+            konyvek.remove(r)
+            writeFileKonyv()
+            print(f'{name} sikeresen törölve lett a listából\n')
+
+def BeKonyv():
+    nev = input('Új könyv neve: ')
+    szerzo = input('Új könyv szerzője: ')
+    kiadasEve  = input('Kiadás éve: ')
+    kategoria = input('Új könyv kategóriája: ')
+    kolcsonozve = "nincs"
+    azonosito = ''
+
+    row = f'{nev};{szerzo};{kiadasEve};{kategoria};{kolcsonozve};{azonosito}\n'
+    f = open('konyvek.csv', 'a', encoding="UTF-8")    
+    f.write(row)
+    f.close()
+
+    r = konyv(row)
+    konyv.append(r)
     
