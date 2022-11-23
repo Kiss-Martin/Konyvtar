@@ -65,16 +65,13 @@ def CimAlapjan():
     if i < len(konyvek):
         print(f'{konyvek[i].szerzo}: {konyvek[i].nev}, {konyvek[i].kiadasEve} Azonosító: {konyvek[i].azonosito}')
         if konyvek[i].kolcsonozve == 'igen':
-            print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\033[0m')
-            input('')
+            print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\n\033[0m')
             return konyvek[i]
         else:
             print('\033[1;32;40mA könyv jelenleg kölcsönözhető\n\033[0m')
-            input('')
             return konyvek[i]
     else:
         print('\033[1;31;40mNincs ilyen ilyen című könyv!\n\033[0m')
-        input('')
         return konyvek[0]
     
 def IroAlapjan():
@@ -83,10 +80,9 @@ def IroAlapjan():
         if szerzo.lower() in r.szerzo.lower():
             print(f'{r.szerzo}: {r.nev}, {r.kiadasEve} Azonosító: {r.azonosito}')
             if r.kolcsonozve == 'igen':
-                print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\033[0m')
+                print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\n\033[0m')
             else:
-                print('\033[1;32;40mA könyv jelenleg kölcsönözhető\033[0m\n')
-    input('\n')
+                print('\033[1;32;40mA könyv jelenleg kölcsönözhető\n\033[0m')
 
 def AzonositoAlapjan():
     id = input('Írja be a könyv azonosítóját: ')
@@ -96,14 +92,11 @@ def AzonositoAlapjan():
     if i < len(konyvek):
         print(f'{konyvek[i].szerzo}: {konyvek[i].nev}, {konyvek[i].kiadasEve} Azonosító: {konyvek[i].azonosito}')
         if konyvek[i].kolcsonozve == 'igen':
-            print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\033[0m')
-            input('')
+            print('\033[1;31;40mA könyv jelenleg nem kölcsönezhető\n\033[0m')
         else:
             print('\033[1;32;40mA könyv jelenleg kölcsönözhető\n\033[0m')
-            input('')
     else:
         print('\033[1;31;40mNincs ilyen azonosítóval rendelkező könyv!\n\033[0m')
-        input('')  
     
 def KolcsonzoKereses():
     choice = ''
@@ -129,16 +122,13 @@ def NevAlapjan():
     if i < len(kolcsonzok):
         print(f'{kolcsonzok[i].nev}, beiratkozva: {kolcsonzok[i].beiratkozas}')
         if kolcsonzok[i].azonosito == 'nincs' and kolcsonzok[i].visszahozas == 'nincs':
-            print('\033[1;33;40mA kölcsönzőnél jelenleg nincs kölcsönzött könyv\033[0m')
-            input('\n')
+            print('\033[1;33;40mA kölcsönzőnél jelenleg nincs kölcsönzött könyv\n\033[0m')
             return kolcsonzok[i]
         else:
-            print(f'kölcsönzött könyve: {kolcsonzok[i].azonosito}, visszahozási határidő: {kolcsonzok[i].visszahozas}')
-            input('\n')
+            print(f'kölcsönzött könyve: {kolcsonzok[i].azonosito}, visszahozási határidő: {kolcsonzok[i].visszahozas}\n')
             return kolcsonzok[i]
     else:
         print('\033[1;31;40mNincs ilyen nevű személy!\n\033[0m') 
-        input('')  
         return kolcsonzok[0]
 
 def kolcsonzes():
@@ -152,11 +142,9 @@ def kolcsonzes():
             writeFileKolcsonzok()
             writeFileKonyv()
         else:
-            print('\033[1;31;40mKölcsönzés sikertelen!\033[0m')
-            input('')
+            print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
     else:
-        print('\033[1;31;40mKölcsönzés sikertelen!\033[0m')
-        input('')
+        print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
 
 def Visszahozas():
     kolcsonzo = NevAlapjan()
@@ -170,11 +158,9 @@ def Visszahozas():
             writeFileKolcsonzok()
             writeFileKonyv()
         else:
-            print('\033[1;31;40mVisszahozás sikertelen!\033[0m')
-            input('')
+            print('\033[1;31;40mVisszahozás sikertelen!\n\033[0m')
     else:
-        print('\033[1;31;40mVisszahozás sikertelen!\033[0m')
-        input('')
+        print('\033[1;31;40mVisszahozás sikertelen!\n\033[0m')
 
 def KiBe():
     choice = ''
@@ -197,7 +183,7 @@ def Ki():
         if r.nev.lower() == name.lower():
             kolcsonzok.remove(r)
             writeFileKolcsonzok()
-            print(f'\033[1;32;40m{name} sikeresen törölve lett a listából\033[0m\n')
+            print(f'\033[1;32;40m{name} sikeresen törölve lett a listából\n\033[0m')
 
 def Be():
     nev = input('Új tag neve: ')
@@ -234,7 +220,7 @@ def KiKonyv():
         if r.nev.lower() == name.lower():
             konyvek.remove(r)
             writeFileKonyv()
-            print(f'\033[1;32;40m{name} sikeresen törölve lett a listából\033[0m\n')
+            print(f'\033[1;32;40m{name} sikeresen törölve lett a listából\n\033[0m')
 
 def BeKonyv():
     nev = input('Új könyv neve: ')
