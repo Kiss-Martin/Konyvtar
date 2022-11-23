@@ -37,11 +37,13 @@ def writeFileKonyv():
 def KeresesMenu():
     choice = ''
     while choice != '0':
-        print('1. Keresés cím alapján')
-        print('2. Keresés író alapján')
-        print('3. Keresés kiadás éve alapján')
-        print('4. Keresés azonosító alapján')
-        print('0. Kilépés a keresésből')
+        print('  ===========[Könyvek keresése]=============')
+        print('----------------------------------------------')
+        print('\t1. Keresés cím alapján')
+        print('\t2. Keresés író alapján')
+        print('\t3. Keresés kiadás éve alapján')
+        print('\t4. Keresés azonosító alapján')
+        print('\t0. Kilépés a keresésből')
 
         choice = input('\nVálasztás (1-4): ')
 
@@ -105,12 +107,14 @@ def AzonositoAlapjan():
 def KolcsonzoKereses():
     choice = ''
     while choice != '0':
-        print('1. Keresés név alapján')
-        print('2. Keresés beiratkozás ideje alapján')
-        print('3. Beiratkoztatás/Kiiratkoztatás')
-        print('0. Kilépés a keresésből')
+        print('  ===========[Kölcsönzők keresése]=============')
+        print('-------------------------------------------------')
+        print('\t1. Keresés név alapján')
+        print('\t2. Keresés beiratkozás ideje alapján')
+        print('\t3. Beiratkoztatás/Kiiratkoztatás')
+        print('\t0. Kilépés a keresésből')
 
-        choice = input('\nVálasztás (1-2): ')
+        choice = input('\nVálasztás (1-3): ')
 
         if choice == '1':
             NevAlapjan()

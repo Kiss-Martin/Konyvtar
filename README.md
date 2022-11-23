@@ -2,10 +2,13 @@
 > Ez egy könyvtár adminisztrációs munkáit szimuláló program.
 ## Funkciói:
 ### Menü:
-A menü 3 felé ágazik:
+A menü 4 felé ágazik:
 
 - Könyvek kölcsönzése:
   - Név bekérés -> Ha kölcsönözhet könyvnév bekérése -> Könyv kölcsönzött státuszba tétele 
+
+- Könyvek visszahozása:
+  - A könyvet kikölcsönző tag nevének és a könyvének címének bekérése után frissíti a kölcsönzök és a könyvek adatbázisát 
 
 - Könyvmenü:
   - Könyvek keresése:
