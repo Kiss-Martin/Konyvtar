@@ -65,7 +65,7 @@ def CimAlapjan():
             if r.kolcsonozve == 'igen':
                 print('A könyv jelenleg nem kölcsönezhető')
                 input('\n')
-                return 'nem'
+                return r
             else:
                 print('A könyv jelenleg kölcsönözhető\n')
                 input('\n')
@@ -135,7 +135,7 @@ def NevAlapjan():
             else:
                 print(f'kölcsönzött könyve: {s.azonosito}, visszahozási határidő: {s.visszahozas}')
                 input('\n')
-                return 'nem'
+                return s
 
 def BeiratkozasAlapjan():
     signin = input('Írja be a kölcsönző beiratkozásának dátumát (éééé.hh.nn): ')
@@ -151,9 +151,9 @@ def BeiratkozasAlapjan():
 
 def kolcsonzes():
     kolcsonzo = NevAlapjan()
-    if kolcsonzo != "nem":
+    if kolcsonzo.azonosito == "nincs":
         konyv =  CimAlapjan()
-        if konyv != "nem":
+        if konyv.kolcsonozve == "nem":
             kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
             kolcsonzo.azonosito = konyv.azonosito
             konyv.kolcsonozve = "igen"
@@ -166,7 +166,23 @@ def kolcsonzes():
         print('Kölcsönzés sikertelen!')
         input('')
 
-
+def Visszahozas():
+    kolcsonzo = NevAlapjan()
+    if kolcsonzo.azonosito != "nincs":
+        konyv =  CimAlapjan()
+        if konyv.kolcsonozve == "igen" and konyv.azonosito == kolcsonzo.azonosito:
+            input('Folyamat megkezdése')
+            kolcsonzo.visszahozas = "nincs"
+            kolcsonzo.azonosito = "nincs"
+            konyv.kolcsonozve = "Nem"
+            writeFileKolcsonzok()
+            writeFileKonyv()
+        else:
+            print('Visszahozás sikertelen!')
+            input('')
+    else:
+        print('Visszahozás sikertelen!')
+        input('')
 
 def KiBe():
     choice = ''
