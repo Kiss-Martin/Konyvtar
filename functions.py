@@ -109,7 +109,7 @@ def KolcsonzoKereses():
         print('\t2. Beiratkoztatás/Kiiratkoztatás')
         print('\t0. Kilépés a keresésből')
 
-        choice = input('\nVálasztás (1-3): ')
+        choice = input('\nVálasztás (1-2): ')
 
         if choice == '1':
             NevAlapjan()
