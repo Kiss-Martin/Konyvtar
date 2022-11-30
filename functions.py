@@ -174,6 +174,7 @@ def Visszahozas():
             print('\033[1;31;40mNincs a kölcsönzőnél könyv!\n\033[0m')
     else:
         print('\033[1;31;40mNincs ilyen nevű kölcsönző!\n\033[0m')
+    input('')    
 
 def KiBe():
     choice = ''
