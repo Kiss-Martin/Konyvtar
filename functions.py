@@ -138,11 +138,10 @@ def NevAlapjan():
 
 def kolcsonzes():
     kolcsonzo = NevAlapjan()
+    konyv =  CimAlapjan()
     if kolcsonzo != "nem":
         if kolcsonzo.azonosito == "nincs":
-            konyv =  CimAlapjan()
             if konyv != "nem":
-                print('Átjutottam')
                 if konyv.kolcsonozve == "nem":
                     kolcsonzo.visszahozas = input('Írja be a visszahozás dátumát (éééé.hh.nn): ')
                     kolcsonzo.azonosito = konyv.azonosito
@@ -151,13 +150,13 @@ def kolcsonzes():
                     writeFileKonyv()
                     print('Sikeres kölcsönzés')
                 else:
-                    print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
+                    print('\033[1;31;40mEz a könyv már ki van adva!\n\033[0m')
             else:
-                print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
+                print('\033[1;31;40mNincs ilyen könyv!\n\033[0m')
         else:
-            print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
+            print('\033[1;31;40mMár van könyv a kölcsönzőnél!\n\033[0m')
     else:
-        print('\033[1;31;40mKölcsönzés sikertelen!\n\033[0m')
+        print('\033[1;31;40mNincs ilyen nevű kölcsönző!\n\033[0m')
     input('')
 
 def Visszahozas():
@@ -175,9 +174,9 @@ def Visszahozas():
             else:
                 print('\033[1;31;40mVisszahozás sikertelen!\n\033[0m')
         else:
-            print('\033[1;31;40mVisszahozás sikertelen!\n\033[0m')
+            print('\033[1;31;40mNincs a kölcsönzőnél könyv!\n\033[0m')
     else:
-        print('\033[1;31;40mVisszahozás sikertelen!\n\033[0m')
+        print('\033[1;31;40mNincs ilyen nevű kölcsönző!\n\033[0m')
 
 def KiBe():
     choice = ''
