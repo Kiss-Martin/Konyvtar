@@ -56,14 +56,11 @@ def KeresesMenu():
         elif choice == '4':
             BeKonyv()
 
-
 def CimAlapjan():
     cim = input('Írja be a könyv pontos címét: ')
-    i = 0
-    print
-    while i < len(konyvek) and konyvek[i].nev.lower() != cim:
+    i = 1
+    while i < len(konyvek) and konyvek[i].nev.lower() != cim.lower():
         i += 1 
-        print('Teszt')
     if i < len(konyvek):
         print(f'{konyvek[i].szerzo}: {konyvek[i].nev}, {konyvek[i].kiadasEve} Azonosító: {konyvek[i].azonosito}')
         if konyvek[i].kolcsonozve == 'igen':
