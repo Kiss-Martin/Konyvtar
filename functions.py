@@ -58,7 +58,7 @@ def KeresesMenu():
 
 def CimAlapjan():
     cim = input('Írja be a könyv pontos címét: ')
-    i = 1
+    i = 0
     while i < len(konyvek) and konyvek[i].nev.lower() != cim.lower():
         i += 1 
     if i < len(konyvek):
