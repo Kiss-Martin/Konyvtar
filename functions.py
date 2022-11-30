@@ -164,7 +164,7 @@ def Visszahozas():
             if konyv.kolcsonozve == "igen" and konyv.azonosito == kolcsonzo.azonosito:
                 kolcsonzo.visszahozas = "nincs"
                 kolcsonzo.azonosito = "nincs"
-                konyv.kolcsonozve = "Nem"
+                konyv.kolcsonozve = "nem"
                 writeFileKolcsonzok()
                 writeFileKonyv()
                 print('Könyv sikeresen visszahozva')
